@@ -20,14 +20,6 @@ function alertInCelcius(farenheit) {
     }
 }
 
-// alertInCelcius(400.5);
-// alertInCelcius(303.6);
-// console.log(`${alertFailureCount} alerts failed.`);
-// console.log('All is well (maybe!)');
-
-
-
-
 // Test function to verify that alertFailureCount is incremented on failure
 function testAlertFailureCountIncrement() {
     alertFailureCount = 0; // Reset count before test
