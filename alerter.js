@@ -1,3 +1,4 @@
+const { expect } = require('chai');
 let alertFailureCount = 0;
 
 function networkAlertStub(celcius) {
