@@ -12,5 +12,45 @@ function print_color_map() {
 }
 
 result = print_color_map();
-expect(result).equals(25);
-console.log('All is well (maybe!)');
+
+// Test function to check the total count of color pairs
+function testColorMapCount() {
+    const result = print_color_map();
+    expect(result).to.equal(25);
+    console.log('Test for total count of color pairs passed.');
+}
+
+// Test function to verify output format
+function testColorMapFormat() {
+    const consoleSpy = sinon.spy(console, 'log'); // Spy on console.log to capture output
+    print_color_map();
+    
+    expect(consoleSpy.calledWith('0 | White | Blue')).to.be.true;
+    expect(consoleSpy.calledWith('1 | White | Orange')).to.be.true;
+    expect(consoleSpy.calledWith('24 | Violet | Slate')).to.be.true;
+    
+    consoleSpy.restore(); // Restore console.log after the test
+    console.log('Test for output format passed.');
+}
+
+// Test function to verify specific mappings
+function testSpecificMappings() {
+    const consoleSpy = sinon.spy(console, 'log'); 
+    print_color_map();
+
+    expect(consoleSpy.getCall(0).args[0]).to.equal('0 | White | Blue');   
+    expect(consoleSpy.getCall(12).args[0]).to.equal('12 | Black | Green'); 
+    expect(consoleSpy.getCall(24).args[0]).to.equal('24 | Violet | Slate'); 
+    
+    consoleSpy.restore(); // Restore console.log after the test
+    console.log('Test for specific mappings passed.');
+}
+
+// Run all test functions
+function runTests() {
+    testColorMapCount();
+    testColorMapFormat();
+    testSpecificMappings();
+}
+
+runTests();
